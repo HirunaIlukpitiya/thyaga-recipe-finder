@@ -97,7 +97,7 @@ export default function SearchField({
           placeholder={`${
             searchData.searchType === "recipe"
               ? "Search by recipe name"
-              : searchData.searchType === "ingrediants"
+              : searchData.searchType === "ingredient"
               ? "Search by ingredient"
               : "Search by category"
           }`}

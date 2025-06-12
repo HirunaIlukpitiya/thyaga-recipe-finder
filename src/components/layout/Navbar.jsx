@@ -52,7 +52,7 @@ export default function Navbar() {
       {isSideBar && (
         <>
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-10"
+            className="fixed inset-0 bg-black bg-opacity-50 z-50"
             onClick={toggleSidebar}
           >
             <div className="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-20 p-4">

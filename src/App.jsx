@@ -8,6 +8,7 @@ import RecipePage from "./pages/RecipePage";
 import SearchResultPage from "./pages/SearchResultPage";
 import { FavoritesProvider, LoadingProvider, SearchProvider } from "./context";
 import FavoritesPage from "./pages/FavoritesPage";
+import ErrorScreen from "./utils/components/ErrorScreen";
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/search" element={<SearchResultPage />} />
+                  <Route path="/recipe/:id" element={<RecipePage />} />
                   <Route path="/favorites" element={<FavoritesPage />} />
+                  <Route path="*" element={<ErrorScreen />} />
                 </Routes>
               </MainLayout>
             </BrowserRouter>

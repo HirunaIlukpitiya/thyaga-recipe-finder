@@ -5,6 +5,7 @@ import { useSearch } from "../context";
 import RecipeCard from "../components/RecipeCard";
 import noFood from "../assets/noFood.svg";
 import Pagination from "../utils/components/Pagination";
+import FeatherIcon from "feather-icons-react";
 
 export default function SearchResultPage() {
   const { searchResults, searchInfo } = useSearch();
@@ -57,10 +58,21 @@ export default function SearchResultPage() {
   return (
     <AppContainer>
       <div className="">
-        <div className="py-4">
+        <div className="py-4 flex items-center gap-3">
+                                  <button
+            onClick={() => window.history.back()}
+            className=" p-2 bg-white bg-opacity-90 rounded-full shadow-md z-10 hover:bg-primary hover:bg-opacity-90 transition-colors duration-200 group"
+          >
+            <FeatherIcon
+              icon="arrow-left"
+              className="text-primary-light group-hover:text-white"
+              size={24}
+            />
+          </button>
           <SearchField data={inputData} handleChange={handleInputChange} />
         </div>
         <div className="">
+
           <h1 className="text-lg font-bold">
             Search Results for "{searchInfo.searchKey}"
           </h1>

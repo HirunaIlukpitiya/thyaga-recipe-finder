@@ -5,6 +5,7 @@ import api from "../utils/api";
 import { responseDataToRecipe } from "../utils/utils";
 import Pagination from "../utils/components/Pagination";
 import RecipeCard from "../components/RecipeCard";
+import FeatherIcon from "feather-icons-react";
 export default function FavoritesPage() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,11 +58,21 @@ export default function FavoritesPage() {
 
   useEffect(() => {
     fetchFavoriteRecipes();
-  }, []);
+  }, [favorites]);
   return (
-    <AppContainer className="py-8">
+    <AppContainer className="py-4">
       <div>
         <div className="">
+          <button
+            onClick={() => window.history.back()}
+            className=" p-2 bg-white bg-opacity-90 rounded-full shadow-md z-10 hover:bg-primary hover:bg-opacity-90 transition-colors duration-200 group"
+          >
+            <FeatherIcon
+              icon="arrow-left"
+              className="text-primary-light group-hover:text-white"
+              size={24}
+            />
+          </button>
           <h1 className="text-lg font-bold">My Favorite Recipes</h1>
           <p className="text-sm text-gray-600 mb-4">
             {favoriteRecipes.length} saved recipes
@@ -75,7 +86,7 @@ export default function FavoritesPage() {
               ))}
             </div>
 
-            {totalPages >= 1 && (
+            {totalPages > 1 && (
               <div className="">
                 <Pagination
                   currentPage={currentPage}
@@ -87,13 +98,8 @@ export default function FavoritesPage() {
           </>
         ) : (
           <div className="text-center py-12 ">
-            <img
-              //src={noFood}
-              alt="noFood"
-              className="mx-auto w-auto h-74 object-contain mb-4"
-            />
             <p className="text-gray-500">
-              No recipes found matching your search criteria.
+              You have no favorite recipes yet. Start adding some!
             </p>
           </div>
         )}

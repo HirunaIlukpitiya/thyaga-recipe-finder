@@ -1,15 +1,23 @@
 import FeatherIcon from "feather-icons-react";
 import { useFavorites } from "../context";
+import { useNavigate } from "react-router-dom";
 
 export default function RecipeCard({ recipe }) {
   const { isFavorite, toggleFavorite } = useFavorites();
   const isFav = isFavorite(recipe.id);
+  const navigation = useNavigate();
   const handleFavoriteToggle = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     toggleFavorite(recipe.id, recipe.title);
   }
+
+  const handleViewRecipe = (e) => {
+    e.preventDefault();
+    navigation(`/recipe/${recipe.id}`);
+  }
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 h-full">
+    <div onClick={handleViewRecipe} className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 h-full">
       <div className="relative">
         <img
           src={recipe.image}
