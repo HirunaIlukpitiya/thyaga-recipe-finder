@@ -1,12 +1,12 @@
 export function responseDataToRecipe(responseData) {
 
     if (!responseData || !responseData.meals) {
-        return null;
+        return [];
     }
 
     if (Array.isArray(responseData.meals) && responseData.meals.length > 1) {
         return responseData.meals.map(meal => {
-            if (!meal) return null;
+            if (!meal) return [];
 
             return {
                 id: meal.idMeal,
@@ -27,7 +27,7 @@ export function responseDataToRecipe(responseData) {
 
     } else {
         const meal = responseData.meals[0];
-        if (!meal) return null;
+        if (!meal) return [];
 
         return {
             id: meal.idMeal,
